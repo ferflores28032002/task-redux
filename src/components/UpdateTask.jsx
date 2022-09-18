@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
 import { updateTask } from "../features/Slices/TaksSlices";
 
 export const UpdateTask = () => {
@@ -32,31 +31,31 @@ export const UpdateTask = () => {
   return (
     <div className="container py-5">
       <form
-        className="card p-4 shadow-lg mb-4"
+        className="card p-4 shadow-lg mb-4 update"
         onSubmit={handleSubmit(elementos)}
       >
         <div className="text-center py-3">
-          <h3>Update Task</h3>
+          <h3>Update Tasks</h3>
         </div>
         <div className="form-floating">
           <input
             autoFocus
             type="text"
             className="form-control"
-            placeholder="taks"
+            placeholder="Task"
             {...register("task", {
               required: true,
               minLength: 5,
             })}
           />
           {errors.task?.type === "required" && (
-            <span>El campo es requerido</span>
+            <span className="place" >the field is required</span>
           )}
           {errors.task?.type === "minLength" && (
-            <span>El campo debe tener al menos 5 caracteres</span>
+            <span className="place">the field must have at least 3 characters</span>
           )}
 
-          <label className="form-label">taks</label>
+          <label className="form-label">Task</label>
         </div>
         <div className="form-floating mt-4">
           <textarea
@@ -70,17 +69,17 @@ export const UpdateTask = () => {
           ></textarea>
 
           {errors.description?.type === "required" && (
-            <span>El campo es requerido</span>
+            <span className="place">the field is required</span>
           )}
           {errors.description?.type === "minLength" && (
-            <span>El campo debe tener al menos 10 caracteres</span>
+            <span className="place">the field must have at least 3 characters</span>
           )}
-          <label>Write to description</label>
+          <label>Write a description</label>
         </div>
 
         <div className="d-grid mt-4">
           <button type="submit" className="btn btn-primary">
-            update task
+            update the Task
           </button>
         </div>
       </form>

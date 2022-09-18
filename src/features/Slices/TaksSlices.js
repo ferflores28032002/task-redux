@@ -32,7 +32,7 @@ export const TaksSlices = createSlice({
       const id = action.payload;
       const nuevoArray = state.filter((datos) => datos.id !== id);
       const retorno = (state = nuevoArray);
-      toast.success("Task Eliminada Correctamente!", {
+      toast.success("¡ task deleted successfully !", {
         position: "top-center",
       });
 
@@ -44,7 +44,7 @@ export const TaksSlices = createSlice({
       const update = state.findIndex((dato) => dato.id === id);
       state[update].task = task;
       state[update].description = description;
-      toast.success("Se a modificado el dato correctamente!", {
+      toast.success("¡ task modified successfully !", {
         position: "top-right",
       });
       localStorage.setItem("task", JSON.stringify(state));

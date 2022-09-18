@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Taks } from "./Taks";
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import { UpdateTask } from "./UpdateTask";
+import { Header } from "./Header";
 
 export const App = () => {
   return (
@@ -9,8 +10,24 @@ export const App = () => {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
-          <Route path="/" element={<Taks />} />
-          <Route path="/updateTask/:id" element={<UpdateTask />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Taks />{" "}
+              </>
+            }
+          />
+          <Route
+            path="/updateTask/:id"
+            element={
+              <>
+                <Header />
+                <UpdateTask />{" "}
+              </>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

@@ -20,8 +20,7 @@ export const Taks = () => {
     let id = uuidv4();
     let nuevo = { id, ...data };
 
-
-    toast.success("Task añadida correctamente!", {
+    toast.success("¡ task added successfully !", {
       position: "top-left",
     });
     dispatch(addTaks(nuevo));
@@ -31,7 +30,10 @@ export const Taks = () => {
     <>
       <div className="container py-5">
         <div className="text-center">
-          <h3>Taks de un Desarrolador</h3>
+          <h3 className="fw-bold text-success">
+            Control of your Tasks
+            <i className=" mx-2 fa-solid fa-list-ol text-success"></i>
+          </h3>
           <hr />
         </div>
 
@@ -41,33 +43,35 @@ export const Taks = () => {
               className="card p-4 shadow-lg mb-4"
               onSubmit={handleSubmit(elementos)}
             >
-              <div className="text-center py-3">
-                <h3>Create Taks</h3>
+              <div className="text-center py-3 ">
+                <h3>Create Task</h3>
               </div>
               <div className="form-floating">
                 <input
                   autoFocus
                   type="text"
                   className="form-control"
-                  placeholder="taks"
+                  placeholder="Task"
                   {...register("task", {
                     required: true,
-                    minLength: 5,
+                    minLength: 3,
                   })}
                 />
                 {errors.task?.type === "required" && (
-                  <span>El campo es requerido</span>
+                  <span className="place">the field is required</span>
                 )}
                 {errors.task?.type === "minLength" && (
-                  <span>El campo debe tener al menos 5 caracteres</span>
+                  <span className="place">
+                    the field must have at least 3 characters
+                  </span>
                 )}
 
-                <label className="form-label">taks</label>
+                <label className="form-label">Task</label>
               </div>
               <div className="form-floating mt-4">
                 <textarea
                   className="form-control"
-                  placeholder="Write to description"
+                  placeholder="write a description"
                   style={{ height: "100px" }}
                   {...register("description", {
                     required: true,
@@ -76,17 +80,19 @@ export const Taks = () => {
                 ></textarea>
 
                 {errors.description?.type === "required" && (
-                  <span>El campo es requerido</span>
+                  <span className="place">the field is required</span>
                 )}
                 {errors.description?.type === "minLength" && (
-                  <span>El campo debe tener al menos 10 caracteres</span>
+                  <span className="place">
+                    the field must have at least 10 characters
+                  </span>
                 )}
-                <label>Write to description</label>
+                <label>write a description</label>
               </div>
 
               <div className="d-grid mt-4">
                 <button type="submit" className="btn btn-success">
-                  add new taks
+                  Add new Task
                 </button>
               </div>
             </form>
@@ -102,6 +108,7 @@ export const Taks = () => {
                     </div>
                     <div>
                       <button
+                      id="boton"
                         onClick={() => dispatch(updateState(tarea.id))}
                         className={
                           tarea.stateTask === "false"
@@ -110,10 +117,10 @@ export const Taks = () => {
                         }
                       >
                         {tarea.stateTask === "false" ? (
-                          "Marcar como Hecha"
+                          "mark as complete"
                         ) : (
                           <span>
-                            <i className="fa-solid fa-check"></i> Completada
+                            <i className="fa-solid fa-check"></i> Completed
                           </span>
                         )}
                       </button>

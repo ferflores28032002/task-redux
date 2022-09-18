@@ -4,9 +4,33 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+a{
+    text-decoration: none;
+}
+.place {
+    font-size: 0.9rem;
+    padding-top: 0.4rem;
+}
+.update {
+    margin: 0px 15rem !important;
+}
 
 html,
 body {
     font-family: 'Poppins', sans-serif;
+    padding-top: 2.1rem;
+}
+
+@media (max-width: 800px){
+    body {
+        padding-top: 1.5rem;
+    }
+    .update {
+        margin: 0px 0rem !important;
+    }
+    #boton{
+        font-size: 0.8rem !important;
+    }
+    
+    
 }
